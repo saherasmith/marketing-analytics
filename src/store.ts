@@ -1,7 +1,34 @@
 import { create } from "zustand";
 
 export type CampaignStatus = "Active" | "Paused" | "Draft";
+export type UserRole =
+  | "Administrator"
+  | "Campaign Manager"
+  | "Marketing Executive"
+  | "Analyst"
+  | "Viewer";
+  type UserStore = {
+  role: UserRole;
+  userName: string;
+  setRole: (role: UserRole) => void;
+  setUserName: (userName: string) => void;
+};
 
+export const useUserStore = create<UserStore>((set) => ({
+  role: (localStorage.getItem("marketing-role") as UserRole) || "Viewer",
+
+  userName: localStorage.getItem("marketing-user-name") || "User",
+
+  setRole: (role) => {
+    localStorage.setItem("marketing-role", role);
+    set({ role });
+  },
+
+  setUserName: (userName) => {
+    localStorage.setItem("marketing-user-name", userName);
+    set({ userName });
+  },
+}));
 export type Campaign = {
   id: number;
   name: string;

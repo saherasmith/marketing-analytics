@@ -1,0 +1,73 @@
+export const campaigns = [
+  {
+    id: 1,
+    name: "Summer Marketing Campaign",
+  },
+  {
+    id: 2,
+    name: "Diwali Campaign",
+  },
+  {
+    id: 3,
+    name: "New Product Launch",
+  },
+];
+
+export const leads = [
+  {
+    id: 1,
+    name: "John Smith",
+  },
+  {
+    id: 2,
+    name: "Priya Sharma",
+  },
+  {
+    id: 3,
+    name: "Rahul Kumar",
+  },
+];
+
+export const reports = [
+  {
+    id: 1,
+    name: "Campaign Performance Report",
+  },
+  {
+    id: 2,
+    name: "Lead Conversion Report",
+  },
+];
+
+export const tasks = [
+  {
+    id: 1,
+    name: "Review Campaign Performance",
+  },
+  {
+    id: 2,
+    name: "Contact New Leads",
+  },
+];
+
+export const budgets = [
+  {
+    id: 1,
+    name: "Q4 Marketing Budget",
+  },
+  {
+    id: 2,
+    name: "Campaign Advertising Budget",
+  },
+];
+
+export const analytics = [
+  {
+    id: 1,
+    name: "Campaign Analytics",
+  },
+  {
+    id: 2,
+    name: "Lead Analytics",
+  },
+];
