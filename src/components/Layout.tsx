@@ -16,14 +16,92 @@ import {
 
 import { useUserStore } from "../store";
 
-import {
-  campaigns,
-  leads,
-  reports,
-  tasks,
-  budgets,
-  analytics,
-} from "../data";
+// =========================
+// TYPES
+// =========================
+
+type SearchItem = {
+  id: number;
+  name: string;
+};
+
+// =========================
+// SEARCH DATA
+// =========================
+
+const campaigns: SearchItem[] = [
+  {
+    id: 1,
+    name: "Summer Marketing Campaign",
+  },
+  {
+    id: 2,
+    name: "Diwali Campaign",
+  },
+  {
+    id: 3,
+    name: "New Product Launch",
+  },
+];
+
+const leads: SearchItem[] = [
+  {
+    id: 1,
+    name: "John Smith",
+  },
+  {
+    id: 2,
+    name: "Sarah Johnson",
+  },
+];
+
+const reports: SearchItem[] = [
+  {
+    id: 1,
+    name: "Campaign Performance Report",
+  },
+  {
+    id: 2,
+    name: "Lead Generation Report",
+  },
+];
+
+const tasks: SearchItem[] = [
+  {
+    id: 1,
+    name: "Review Campaign",
+  },
+  {
+    id: 2,
+    name: "Follow Up With Leads",
+  },
+];
+
+const budgets: SearchItem[] = [
+  {
+    id: 1,
+    name: "Summer Campaign Budget",
+  },
+  {
+    id: 2,
+    name: "Diwali Campaign Budget",
+  },
+];
+
+const analytics: SearchItem[] = [
+  {
+    id: 1,
+    name: "Campaign Analytics",
+  },
+  {
+    id: 2,
+    name: "Lead Analytics",
+  },
+];
+
+// =========================
+// NAVIGATION
+// =========================
 
 const navigation = [
   {
@@ -94,6 +172,10 @@ const navigation = [
   },
 ];
 
+// =========================
+// LAYOUT
+// =========================
+
 export default function Layout() {
   const role = useUserStore((state) => state.role);
   const userName = useUserStore((state) => state.userName);
@@ -106,6 +188,10 @@ export default function Layout() {
   // Search box reference
   const searchRef = useRef<HTMLDivElement>(null);
 
+  // =========================
+  // VISIBLE NAVIGATION
+  // =========================
+
   const visibleNavigation = navigation.filter((item) =>
     item.roles.includes(role)
   );
@@ -115,42 +201,42 @@ export default function Layout() {
   // =========================
 
   const searchItems = [
-    ...campaigns.map((item) => ({
+    ...campaigns.map((item: SearchItem) => ({
       name: item.name,
       description: "Campaign",
       path: "/campaigns",
       icon: BriefcaseBusiness,
     })),
 
-    ...leads.map((item) => ({
+    ...leads.map((item: SearchItem) => ({
       name: item.name,
       description: "Lead",
       path: "/leads",
       icon: Users,
     })),
 
-    ...reports.map((item) => ({
+    ...reports.map((item: SearchItem) => ({
       name: item.name,
       description: "Report",
       path: "/reports",
       icon: FileText,
     })),
 
-    ...tasks.map((item) => ({
+    ...tasks.map((item: SearchItem) => ({
       name: item.name,
       description: "Task",
       path: "/tasks",
       icon: CheckSquare,
     })),
 
-    ...budgets.map((item) => ({
+    ...budgets.map((item: SearchItem) => ({
       name: item.name,
       description: "Budget",
       path: "/budget",
       icon: DollarSign,
     })),
 
-    ...analytics.map((item) => ({
+    ...analytics.map((item: SearchItem) => ({
       name: item.name,
       description: "Analytics",
       path: "/analytics",
@@ -175,13 +261,17 @@ export default function Layout() {
     return searchableText.includes(query);
   });
 
-  // Reset selected result when search text changes
+  // =========================
+  // RESET SELECTED RESULT
+  // =========================
+
   useEffect(() => {
     setSelectedIndex(0);
   }, [searchQuery]);
 
   // =========================
-  // CTRL + K + CLICK OUTSIDE
+  // CTRL + K
+  // CLICK OUTSIDE
   // =========================
 
   useEffect(() => {
